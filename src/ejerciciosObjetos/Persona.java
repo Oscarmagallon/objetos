@@ -1,5 +1,7 @@
 package ejerciciosObjetos;
 
+import java.util.Random;
+
 public class Persona {
 	private String nombre;
 	private String dni;
@@ -16,7 +18,7 @@ public class Persona {
 	
 	public Persona() {
 		this.nombre = "";
-		dni = "";
+		dni = generarDNI();
 		this.edad = 0;
 		this.sexo = HOMBRE;
 		this.peso = 0;
@@ -26,7 +28,7 @@ public class Persona {
 	public Persona(String nombre, int edad, char sexo) {
 		
 		this.nombre = nombre;
-		dni = "";
+		dni = generarDNI();
 		this.edad = edad;
 		this.sexo = comprobarSexo(sexo);
 		this.peso = 0;
@@ -34,7 +36,6 @@ public class Persona {
 	}
 
 	public Persona(String nombre, String dni, int edad, char sexo, double peso, float altura) {
-		super();
 		this.nombre = nombre;
 		this.dni = dni;
 		this.edad = edad;
@@ -71,6 +72,27 @@ public class Persona {
 		}
 		
 	}
+	private String generarDNI() {
+		Random r = new Random();
+		String dni = "";
+		
+		for(int i = 0;i<8;i++) {
+			dni+=r.nextInt(9);
+		}
+		dni+= "-" + gererarLetraDNI(dni);
+		return dni;
+		
+	}
+	private String gererarLetraDNI(String dni) {
+		String letra ="";
+		int resto = 0;
+		int dniNum= Integer.valueOf(dni);
+		String letras="TRWAGMYFPDXBNJZSQVHLCKE";
+		resto = dniNum%23;
+		letra+=letras.substring(resto,resto+1);
+		return letra;
+	}
+	
 
 	@Override
 	public String toString() {
