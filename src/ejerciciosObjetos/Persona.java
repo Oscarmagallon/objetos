@@ -92,6 +92,17 @@ public class Persona {
 		letra+=letras.substring(resto,resto+1);
 		return letra;
 	}
+	private String comprobarDNI(String Dni) {
+		boolean valido = false;
+		String letraValida, letraRecibida;
+		String numsDNI = dni.substring(0,8);
+		letraRecibida= dni.substring(9);
+		letraValida=gererarLetraDNI(numsDNI);
+		
+		
+		
+		
+	}
 	
 
 	@Override
