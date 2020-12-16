@@ -1,6 +1,7 @@
 package ejerciciosObjetos;
 
 import java.util.Random;
+import java.util.Scanner;
 
 public class Persona {
 	private String nombre;
@@ -8,7 +9,7 @@ public class Persona {
 	private int edad;
 	private char sexo; //H-Hombre M-Mujer
 	private double peso;
-	private float altura; // altura en metros
+	private double altura; // altura en metros
 	
 	private final char HOMBRE='H'; // Constante hombre
 	private final char MUJER='H'; //Constante mujer
@@ -35,14 +36,14 @@ public class Persona {
 		this.altura = 0;
 	}
 
-	public Persona(String nombre, String dni, int edad, char sexo, double peso, float altura) {
-		this.nombre = nombre;
-		this.dni = dni;
-		this.edad = edad;
-		this.sexo = comprobarSexo(sexo);
-		this.peso = peso;
-		this.altura = altura;
-	}
+	public Persona(String nombre, String dni, int edad, char sexo, double peso, double altura) {
+        this.nombre = dimeNombre();
+        this.dni = comprobarDNI(dni);
+        this.edad = edad;
+        this.sexo = comprobarSexo(sexo);
+        this.peso = peso;
+        this.altura = altura;
+    }
 	
 	public int calcularIMC() {
 		double peso = this.peso / (altura*altura);
@@ -92,20 +93,46 @@ public class Persona {
 		letra+=letras.substring(resto,resto+1);
 		return letra;
 	}
-	private String comprobarDNI(String Dni) {
-		boolean valido = false;
-		String letraValida, letraRecibida;
-		String numsDNI = dni.substring(0,8);
-		letraRecibida= dni.substring(9);
-		letraValida=gererarLetraDNI(numsDNI);
-		if(letraValida.equals(letraRecibida)) {
-			return 
-		}
-		
-		
-		
+	private String comprobarDNI(String dni) {
+
+        boolean valido = false;
+        String letraValida, letraRecibida;
+        String numDni;
+
+        numDni=dni.substring(0,8);
+        letraRecibida=dni.substring(9);
+
+        letraValida=gererarLetraDNI(numDni);
+
+        if(letraRecibida.equalsIgnoreCase(letraValida)) {
+            valido=true;
+        }
+        if (valido) {
+            return dni;
+        } else {
+            //Dos opciones - 1º Corregir letra mal o
+            //2º generar un dni nuevo
+            return numDni+"-"+letraValida;
+        }
+    }
+	private String dimeNombre() {
+		Scanner leer=new Scanner(System.in);
+		System.out.println("Dime nombre");
+		this.nombre=leer.next();
+		return nombre;
 		
 	}
+	private char dimeSexo() {
+		Scanner leer=new Scanner(System.in);
+		System.out.println("Dime sexo");
+		this.sexo=leer.next();
+		return s;
+		
+	}
+		
+		
+		
+	
 	
 
 	@Override
