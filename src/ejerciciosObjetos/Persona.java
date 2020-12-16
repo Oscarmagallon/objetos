@@ -98,6 +98,9 @@ public class Persona {
 		String numsDNI = dni.substring(0,8);
 		letraRecibida= dni.substring(9);
 		letraValida=gererarLetraDNI(numsDNI);
+		if(letraValida.equals(letraRecibida)) {
+			return 
+		}
 		
 		
 		
