@@ -122,14 +122,14 @@ public class Persona {
 		return nombre;
 		
 	}
-	private char dimeSexo() {
-		Scanner leer=new Scanner(System.in);
-		System.out.println("Dime sexo");
-		this.sexo=leer.next();
-		return s;
-		
+	
+	public boolean esigual (Persona p) {
+		if(this.dni.equals(p.dni)) {
+			return true;
+		}else {
+			return false;
+		}
 	}
-		
 		
 		
 	
