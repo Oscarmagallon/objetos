@@ -1,4 +1,4 @@
-package Contraseñas;
+package password;
 
 import java.util.Random;
 
@@ -15,14 +15,10 @@ public class Password {
 		this.longitud = longitud;
 		contrasena="";
 		generarPassword();
+		esFuerte();
 		
 	}
-	public boolean esFuerte() {
-		
-		
-		
-		return false;
-	}
+	
 	private void generarPassword() {
 		String letraMi= "abcdefghijklmnñopqrstuvwxyz";
 		String letraMa= letraMi.toUpperCase();
@@ -42,12 +38,16 @@ public class Password {
 		String numeros="0123456789";
 		int conMin=0,contMay=0,contNums=0;
 		
-		for(int i = 0; i<letraMi.length();i++){
-			if(contrasena.substring(i,i+1).equals(anObject)) {
-				
+		for(int i =0; i<letraMi.length();i++) {
+			for(int j = 0 ; j < letraMi.length();j++) {
+				if(letraMa.substring(i+1).equals(contrasena.substring(j+1))) {
+					contMay++;
+					System.out.println(contMay);
+					}
+				}
 			}
+		return false;
 		}
-	}
 	
 	public int getLongitud() {
 		return longitud;

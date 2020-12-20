@@ -1,4 +1,4 @@
-package Contraseñas;
+package password;
 
 public class Principal {
 
@@ -6,7 +6,7 @@ public class Principal {
 		// TODO Auto-generated method stub
 		Password p = new Password(5);
 		System.out.println(p.getContrasena());
-
+		System.out.println(p.esFuerte());
 	}
 
 }
