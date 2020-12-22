@@ -4,7 +4,7 @@ public class Principal {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		Password p = new Password(10);
+		Password p = new Password(100);
 		System.out.println(p.getContrasena());
 		System.out.println(p.esFuerte());
 	}

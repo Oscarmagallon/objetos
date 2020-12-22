@@ -7,15 +7,34 @@ public class Password {
 	private String contrasena;
 
 	public Password() {
-		longitud = 8;
-		contrasena = "AAAaa111111"; // Borrar luego despues de las pruebas.
-
+		longitud = 0;
+		generarPassword(1); // Borrar luego despues de las pruebas.
+		longitud = contrasena.length();
 	}
 
 	public Password(int longitud) {
 		this.longitud = longitud;
 		contrasena = "";
 		generarPassword();
+
+	}
+	
+	private void generarPassword(int num) {
+		String letraMi = "abcdefghijklmnñopqrstuvwxyz";
+		String letraMa = letraMi.toUpperCase();
+		String numeros = "0123456789";
+		String posibi = letraMi + letraMa + numeros;
+		Random r = new Random();
+		int aleatorio = 0;
+		while (esFuerte() == false) {
+			for (int i = 0; i < longitud; i++) {
+				aleatorio = r.nextInt(posibi.length());
+				contrasena += posibi.substring(aleatorio, aleatorio + 1);
+			}
+			longitud++;
+		}
+			
+		
 
 	}
 
@@ -26,13 +45,13 @@ public class Password {
 		String posibi = letraMi + letraMa + numeros;
 		Random r = new Random();
 		int aleatorio = 0;
-		while(esFuerte()==false) {
-		for (int i = 0; i < longitud; i++) {
-			aleatorio = r.nextInt(posibi.length());
-			contrasena += posibi.substring(aleatorio, aleatorio + 1);
-		}
-		esFuerte();
-		}
+		//while (esFuerte() == false) {
+			for (int i = 0; i < longitud; i++) {
+				aleatorio = r.nextInt(posibi.length());
+				contrasena += posibi.substring(aleatorio, aleatorio + 1);
+			}
+
+		//}
 
 	}
 
@@ -42,7 +61,7 @@ public class Password {
 		String numeros = "0123456789";
 		int conMin = 0, contMay = 0, contNums = 0;
 
-		for (int i = 0; i < contrasena.length(); i++) {
+		for (int i = 0; i < longitud; i++) {
 
 			for (int j = 0; j < letraMa.length(); j++) {
 
@@ -55,14 +74,14 @@ public class Password {
 				}
 			}
 		}
-		for(int i =0; i < contrasena.length();i++) {
-			for(int j = 0 ;j<numeros.length();j++) {
-				if (contrasena.substring(i,i+1).equals(numeros.substring(j,j+1))){
+		for (int i = 0; i < contrasena.length(); i++) {
+			for (int j = 0; j < numeros.length(); j++) {
+				if (contrasena.substring(i, i + 1).equals(numeros.substring(j, j + 1))) {
 					contNums++;
 				}
 			}
 		}
-		if(contMay>2&&contNums>5&&conMin>1) {
+		if (contMay > 2 && contNums > 5 && conMin > 1) {
 			return true;
 		}
 		return false;
