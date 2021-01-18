@@ -18,7 +18,7 @@ public class Principal {
 				break;
 			}
 			case 3: {
-
+				agenda.borrarContacto();
 				break;
 			}
 			case 4: {
