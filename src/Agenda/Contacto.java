@@ -2,6 +2,7 @@ package Agenda;
 
 public class Contacto {
 	/**
+	 * Declaramos variables
 	 */
 	private String nombre;
 	private String telefono;
